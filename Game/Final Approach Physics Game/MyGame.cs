@@ -328,7 +328,6 @@ public class MyGame : Game
 
             PolyShape shape = new PolyShape(new Vec2(0, 0), new List<Vec2>
             {
-
             new Vec2( 648, 905),
             new Vec2( 676, 216),
             new Vec2( 904, 216),
@@ -359,7 +358,7 @@ public class MyGame : Game
                 new Vec2 (50,50),
                 new Vec2 (100,0),
 
-        }, null);
+            }, null);
             AddChild(shape);
 
             shape = new PolyShape(new Vec2(100, 200), new List<Vec2>
@@ -445,6 +444,8 @@ public class MyGame : Game
             //    new Vec2(178, 69)},null,false);
             //AddChild(shape);
 
+
+
             PolyShape shape = new PolyShape(new Vec2(0, 0), new List<Vec2>
             {
                 new Vec2( 509, 205),
@@ -460,6 +461,19 @@ public class MyGame : Game
             }, null, false);
             AddChild(shape);
 
+            shape = new PolyShape(new Vec2(0, 100),
+                new List<Vec2> {
+                new Vec2(10,20),
+                new Vec2 (10,100),
+                new Vec2 (30,100),
+                new Vec2 (30,20),
+                new Vec2(10,20)
+                },
+                new List<Ball>{
+                    new Ball(20,new Vec2(20,20), Vec2.Zero(), false),
+                    new Ball(20,new Vec2(20,100), Vec2.Zero(), false)
+                }, null);
+            AddChild(shape);
 
             shape = new PolyShape(new Vec2(100, 600), new List<Vec2> {
             new Vec2(0,0),

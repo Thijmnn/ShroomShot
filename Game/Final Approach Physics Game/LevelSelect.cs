@@ -14,7 +14,7 @@ public class LevelSelect : AnimationSprite
     LevelButton Level2;
     LevelButton Level3;
 
-    public LevelSelect() : base("BackgroundLevelselectFinal.png", 8, 13,-1,false,false)
+    public LevelSelect() : base("BackgroundLevelselect.png", 8, 13,-1,false,false)
     {
         Levelpath = new Sprite("LevelPathFinal.png");
         AddChild(Levelpath);
