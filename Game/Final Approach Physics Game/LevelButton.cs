@@ -13,17 +13,22 @@ namespace GXPEngine
         //public delegate void OnButtonClicked(int index);
         //public OnButtonClicked onButtonClicked;
         int index;
+        public bool active;
 
-        public LevelButton(Vec2 pos, string fileName, int nIndex, int cols = 1, int rows = 1) : base(fileName, cols, rows, -1, false, false)
+        public LevelButton(Vec2 pos, string fileName, int nIndex ,int cols = 1, int rows = 1) : base(fileName, cols, rows, -1, false, false)
         {
             x = pos.x;
             y = pos.y;
+            active = true;
             myGame = (MyGame)game;
             index = nIndex;
         }
         void Update()
         {
-            CheckInput();
+            if (active)
+            {
+                CheckInput();
+            }
         }
 
         void CheckInput()

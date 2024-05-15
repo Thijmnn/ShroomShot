@@ -22,14 +22,12 @@ public class GameState : EasyDraw
         myGame = (MyGame)game;
         radius = pRadius;
         moving = pMoving;
-
-        
     }
 
-    void Draw(byte red, byte green, byte blue)
+    void Draw(byte red, byte green, byte blue, byte alpha)
     {
-        Fill(red, green, blue);
-        Stroke(red, green, blue);
+        Fill(red, green, blue, alpha);
+        Stroke(red, green, blue,alpha);
         Ellipse(radius, radius, 2 * radius, 2 * radius);
     }
 
@@ -37,13 +35,13 @@ public class GameState : EasyDraw
     {
         if(myGame.levelIndex == 2)
         {
-            ballPos = new Vec2(779, 849);
+            ballPos = new Vec2(767, 851);
             ballSpeed = new Vec2(0,-13);
         }
         else if(myGame.levelIndex == 5)
         {
-            ballPos = new Vec2(588, 800);
-            ballSpeed = new Vec2(0,-13);
+            ballPos = new Vec2(576, 802);
+            ballSpeed = new Vec2(0.6f,-12);
         }
         else if (myGame.levelIndex == 8)
         {
@@ -53,13 +51,13 @@ public class GameState : EasyDraw
         switch (gamestate)
         {
             case 0:
-                Draw(255, 0, 0);
-
+                Draw(255, 0, 0,0);
+                Stroke(255, 0, 0, 0);
                 break;
 
             case 1:
-                Draw(0, 255, 0);
-
+                Draw(0, 255, 0,0);
+                Stroke(0, 255, 0, 0);
                 break;
         }
 

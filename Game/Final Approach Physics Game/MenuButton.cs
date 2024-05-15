@@ -9,7 +9,7 @@ using GXPEngine;
 public class MenuButton : Sprite
 {
     MyGame myGame;
-    public MenuButton(Vec2 pos) : base("MenuPlaceholder.png", false, false)
+    public MenuButton(Vec2 pos) : base("MenuButton.png", false, false)
     {
         x = pos.x;
         y = pos.y;
@@ -28,7 +28,7 @@ public class MenuButton : Sprite
 
             if (Input.mouseX > x && Input.mouseY > y && Input.mouseX < x + width && Input.mouseY < y + height)
             {
-                myGame.LoadLevel(myGame.levelIndex + 2);
+                myGame.LoadLevel(1);
             }
         }
     }

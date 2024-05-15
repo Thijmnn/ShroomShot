@@ -71,7 +71,7 @@ public class MyGame : Game
         Console.WriteLine("GetUnitVectorDeg works: {0}, Result: {1}, Goal: (-1,0)",
             Approximate(v1, new Vec2(-1, 0)), v1);
 
-        Console.WriteLine("Äre these random uni vectors??"); // A: No
+        Console.WriteLine("ï¿½re these random uni vectors??"); // A: No
         //RANDOMUNITVECCCCCCCCCCC
         for (int i = 0; i < 10; i++)  // Makes 10 random vectors with a length of 1
         {
@@ -136,10 +136,7 @@ public class MyGame : Game
     public Hole hole2;
     public Hole hole3;
 
-
-    Sprite star1;
-    Sprite star2;
-    Sprite star3;
+    Sprite PopUPMSg;
 
     public  int score;
 
@@ -150,9 +147,6 @@ public class MyGame : Game
 	{
 
         score = 10500;
-        star1 = new Sprite("StarPlaceholder.png", false, false);
-        star2 = new Sprite("StarPlaceholder.png", false, false);
-        star3 = new Sprite("StarPlaceholder.png", false, false);
 
         _movers = new List<Ball>();
         _lines = new List<NLineSegment>();
@@ -220,6 +214,11 @@ public class MyGame : Game
 
     void Update () 
     {
+
+        if(Input.GetKeyDown(Key.SPACE)) 
+        {
+            PopUPMSg.alpha = 0;
+        }
         /*Console.WriteLine(Level1Complete);
         Console.WriteLine(Level2Complete);*/
         for (int i = _movers.Count - 1; i >= 0; i--)
@@ -347,51 +346,71 @@ public class MyGame : Game
             }, null, false);
             AddChild(shape);
 
-            Sprite background = new Sprite("FuguhlutooganLevel1Final.png");
+            Sprite background = new Sprite("Level1Final.png");
             AddChild(background);
 
-            shape = new PolyShape(new Vec2(100, 100), new List<Vec2>
-            {
-                new Vec2 (100,0),
-                new Vec2 (0,0),
-                
-                new Vec2 (50,50),
-                new Vec2 (100,0),
+            
+            Sprite ScoreElement = new Sprite("ScoreBar.png");
+            AddChild(ScoreElement);
+            ScoreElement.SetXY(game.width/2 - ScoreElement.width + 50,0);
 
-            }, null);
-            AddChild(shape);
-
-            shape = new PolyShape(new Vec2(100, 200), new List<Vec2>
-            {
-                new Vec2 (100,0),
-                new Vec2 (0,0),
-
-                new Vec2 (50,50),
-                new Vec2 (100,0),
-
-        }, null);
-            AddChild(shape);
-
-            shape = new PolyShape(new Vec2(100, 300), new List<Vec2>
-            {
-                new Vec2 (100,0),
-                new Vec2 (0,0),
-
-                new Vec2 (50,50),
-                new Vec2 (100,0),
-
-        }, null);
-            AddChild(shape);
-
-
-            MenuButton menubutton = new MenuButton(new Vec2(1300, 100));
+            MenuButton menubutton = new MenuButton(new Vec2(0, 0));
             AddChild(menubutton);
 
             GameState gamestate = new GameState(10, new Vec2(20, 20), false);
             AddChild(gamestate);
 
-            ResetButton resetbutton = new ResetButton(new Vec2(1000, 600));
+            ResetButton resetbutton = new ResetButton(new Vec2(1014, 4));
             AddChild(resetbutton);
+
+            AnimationSprite backgroundUI = new AnimationSprite("UIFinal.png", 1, 3);
+            AddChild(backgroundUI);
+            backgroundUI.SetCycle(0, 1);
+
+            PopUPMSg = new Sprite("ShootMessage.png");
+            AddChild(PopUPMSg);
+            PopUPMSg.SetXY(442, 940);
+
+            shape = new PolyShape(new Vec2(0, 0), new List<Vec2>
+            {
+                new Vec2( 1754, 62),
+                new Vec2( 1754, 99),
+                new Vec2( 1714, 99),
+                new Vec2( 1714, 156),
+                new Vec2( 1757, 156),
+                new Vec2( 1757, 198),
+                new Vec2( 1814, 198),
+                new Vec2( 1814, 156),
+                new Vec2( 1857, 156),
+                new Vec2( 1857, 99),
+                new Vec2( 1814, 99),
+                new Vec2( 1814, 62),
+                new Vec2( 1754, 62)
+
+            }, null);
+            AddChild(shape);
+
+            shape = new PolyShape(new Vec2(0, 0), new List<Vec2>
+            {
+                new Vec2( 1642, 412),
+                new Vec2( 1569, 512),
+                new Vec2( 1723, 512),
+                new Vec2( 1642, 412)
+
+        }, null);
+            AddChild(shape);
+
+            shape = new PolyShape(new Vec2(0, 0), new List<Vec2>
+            {
+                new Vec2( 1692, 789),
+                new Vec2( 1721, 862),
+                new Vec2( 1865, 859),
+                new Vec2( 1836, 782),
+                new Vec2( 1692, 789)
+
+
+        }, null);
+            AddChild(shape);
         }
         if(index == 3)
         {
@@ -426,23 +445,12 @@ public class MyGame : Game
         }
         if (index == 5)
         {
-            Sprite background = new Sprite("BackdropJittleyangVsFuguhlutoogan.png");
-            AddChild(background);
+            
             _text = new EasyDraw(250, 40);
             _text.TextAlign(CenterMode.Min, CenterMode.Min);
             AddChild(_text);
 
-            //PolyShape shape = new PolyShape(new Vec2(0,0), new List<Vec2> {
-            //    new Vec2(178, 69),
-            //    new Vec2(871, 55),
-            //    new Vec2(1137, 302),
-            //    new Vec2(917, 463),
-            //    new Vec2(767, 302),
-            //    new Vec2(578, 320),
-            //    new Vec2(585, 673),
-            //    new Vec2(223, 659),
-            //    new Vec2(178, 69)},null,false);
-            //AddChild(shape);
+            
 
 
 
@@ -470,10 +478,30 @@ public class MyGame : Game
                 new Vec2(10,20)
                 },
                 new List<Ball>{
-                    new Ball(20,new Vec2(20,20), Vec2.Zero(), false),
-                    new Ball(20,new Vec2(20,100), Vec2.Zero(), false)
                 }, null);
+                    new Ball(20,new Vec2(20,100), Vec2.Zero(), false)
+                    new Ball(20,new Vec2(20,20), Vec2.Zero(), false),
             AddChild(shape);
+            shape = new PolyShape(new Vec2(880, 282), 50, false);
+            AddChild(shape);
+
+            shape = new PolyShape(new Vec2(0, 0), new List<Vec2> {
+            new Vec2( 373, 587),
+            new Vec2( 406, 614),
+            new Vec2( 538, 622),
+            new Vec2( 574, 597),
+            new Vec2( 541, 570),
+            new Vec2( 414, 563),
+            new Vec2( 375, 586),
+            }, null, false);
+
+            AddChild(shape);
+
+            hole2 = new Hole(new Vec2(1073, 403));
+            AddChild(hole2);
+
+            Sprite background = new Sprite("Level2Final.png");
+            AddChild(background);
 
             shape = new PolyShape(new Vec2(100, 600), new List<Vec2> {
             new Vec2(0,0),
@@ -484,16 +512,7 @@ public class MyGame : Game
             }, null);
             AddChild(shape);
 
-            shape = new PolyShape(new Vec2(700, 600), new List<Vec2> {
-            new Vec2(0,0),
-            new Vec2(0,100),
-            new Vec2(25,100),
-            new Vec2(25,0),
-            new Vec2(0,0),
-            }, null, false);
-            shape.Rotate(90);
-            shape.SetPos(new Vec2(480,640));
-            AddChild(shape);
+            
 
             shape = new PolyShape(new Vec2(50, 200), new List<Vec2> {
             new Vec2(50,0),
@@ -515,10 +534,10 @@ public class MyGame : Game
             }, null);
             AddChild(shape);
 
-            shape = new PolyShape(new Vec2(200, 800), 30, true);
-            AddChild(shape);
+            MenuButton menubutton = new MenuButton(new Vec2(1300, 100));
+            AddChild(menubutton);
 
-            shape = new PolyShape(new Vec2(822, 300), 50, false);
+            shape = new PolyShape(new Vec2(200, 800), 35, true);
             AddChild(shape);
 
             GameState gamestate = new GameState(10, new Vec2(20, 20), false);
@@ -527,8 +546,13 @@ public class MyGame : Game
             ResetButton resetbutton = new ResetButton(new Vec2(800,600));
             AddChild(resetbutton);
 
-            hole2 = new Hole(new Vec2(1073, 403));
-            AddChild(hole2);
+            AnimationSprite backgroundUI = new AnimationSprite("UIFinal.png", 1, 3);
+            AddChild(backgroundUI);
+            backgroundUI.SetCycle(1, 1);
+
+            PopUPMSg = new Sprite("ShootMessage.png");
+            AddChild(PopUPMSg);
+            PopUPMSg.SetXY(442, 940);
 
         }
         if (index == 6)
@@ -564,6 +588,12 @@ public class MyGame : Game
         }
         if (index == 8)
         {
+            Sprite background = new Sprite("Level3Final.png");
+            AddChild(background);
+
+            
+            
+
             PolyShape shape = new PolyShape(new Vec2(0, 0), new List<Vec2> {
             new Vec2 (792,154),
             new Vec2 (1081,156),
@@ -647,6 +677,7 @@ public class MyGame : Game
             
             Endscreen endscreen = new Endscreen();
             AddChild(endscreen);
+
 
             RetryButton retryButton = new RetryButton(new Vec2(200, 200));
             AddChild(retryButton);

@@ -1,10 +1,10 @@
-﻿using GXPEngine;
+using GXPEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-public class LevelSelect : AnimationSprite
+public class LevelSelect : Sprite
 {
     Sprite Levelpath;
 
@@ -14,7 +14,7 @@ public class LevelSelect : AnimationSprite
     LevelButton Level2;
     LevelButton Level3;
 
-    public LevelSelect() : base("BackgroundLevelselect.png", 8, 13,-1,false,false)
+    public LevelSelect() : base("0001.png",false,false)
     {
         Levelpath = new Sprite("LevelPathFinal.png");
         AddChild(Levelpath);
@@ -24,35 +24,43 @@ public class LevelSelect : AnimationSprite
         Level1.width = 300;
         Level1.height = 300;
 
-        Level2 = new LevelButton(new Vec2(200, 400), "Level1PlaceHolder.png", 5, 2);
+        Level2 = new LevelButton(new Vec2(381, 604), "Level2IslandFinal.png", 5, 2);
         AddChild(Level2);
+        Level2.width = 300;
+        Level2.height = 300;
 
-        Level3 = new LevelButton(new Vec2(200, 700), "Level1PlaceHolder.png", 8, 2);
+        Level3 = new LevelButton(new Vec2(730, 200), "Level3IslandFinal.png", 8, 2);
         AddChild(Level3);
+        Level3.width = 300;
+        Level3.height = 300;
 
         myGame = (MyGame)game;
-        
+    
     }
 
     void Update()
     {
-        Animate(0.3f);
+        
         //CheckInput();
         if (myGame.Level1Complete)
         {
-            Level2.SetCycle(0, 1);
+            Level2.SetCycle(1, 1);
+            Level2.active = true;
         }
         else
         {
-            Level2.SetCycle(1, 1);
+            Level2.SetCycle(0, 1);
+            Level2.active = false;
         }
         if (myGame.Level2Complete)
         {
-            Level3.SetCycle(0, 1);
+            Level3.SetCycle(1, 1);
+            Level3.active = true;
         }
         else
         {
-            Level3.SetCycle(1, 1);
+            Level3.SetCycle(0, 1);
+            Level3.active = false;
         }
     }
 }
