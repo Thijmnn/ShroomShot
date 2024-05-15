@@ -19,7 +19,7 @@ public class LevelSelect : Sprite
         Levelpath = new Sprite("LevelPathFinal.png");
         AddChild(Levelpath);
 
-        Level1 = new LevelButton(new Vec2(165, 195), "Level1IslandFinal.png", 2, 1);
+        Level1 = new LevelButton(new Vec2(165, 195), "Level1IslandFinal.png", 5, 1);
         AddChild(Level1);  
         Level1.width = 300;
         Level1.height = 300;

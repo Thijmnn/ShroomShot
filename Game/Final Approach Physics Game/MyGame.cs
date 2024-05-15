@@ -469,23 +469,7 @@ public class MyGame : Game
             }, null, false);
             AddChild(shape);
 
-            shape = new PolyShape(new Vec2(0, 100),
-                new List<Vec2> {
-                new Vec2(10,20),
-                new Vec2 (10,100),
-                new Vec2 (30,100),
-                new Vec2 (30,20),
-                new Vec2(10,20)
-                },
-                new List<Ball>{
-                }, null);
-                    new Ball(20,new Vec2(20,100), Vec2.Zero(), false)
-                    new Ball(20,new Vec2(20,20), Vec2.Zero(), false),
-            AddChild(shape);
-            shape = new PolyShape(new Vec2(880, 282), 50, false);
-            AddChild(shape);
-
-            shape = new PolyShape(new Vec2(0, 0), new List<Vec2> {
+            PolyShape border = new PolyShape(new Vec2(0, 0), new List<Vec2> {
             new Vec2( 373, 587),
             new Vec2( 406, 614),
             new Vec2( 538, 622),
@@ -495,13 +479,31 @@ public class MyGame : Game
             new Vec2( 375, 586),
             }, null, false);
 
-            AddChild(shape);
+            AddChild(border);
 
             hole2 = new Hole(new Vec2(1073, 403));
             AddChild(hole2);
 
             Sprite background = new Sprite("Level2Final.png");
             AddChild(background);
+
+            shape = new PolyShape(new Vec2(0, 100),
+                new List<Vec2> {
+                new Vec2(10,20),
+                new Vec2 (10,100),
+                new Vec2 (30,100),
+                new Vec2 (30,20),
+                new Vec2(10,20)
+                },
+                new List<Ball>{
+                    new Ball(20,new Vec2(20,100), Vec2.Zero(), false),
+                    new Ball(20,new Vec2(20,20), Vec2.Zero(), false)
+                }, null);
+            AddChild(shape);
+
+
+            shape = new PolyShape(new Vec2(880, 282), 50, false);
+            AddChild(shape);
 
             shape = new PolyShape(new Vec2(100, 600), new List<Vec2> {
             new Vec2(0,0),
