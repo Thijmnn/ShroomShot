@@ -1,8 +1,10 @@
 GXPEngine/obj
 .vs
 GXPEngine.userprefs
-GXPEngine/bin/Debug
-GXPEngine/bin/Release
+*/bin/Debug
+*/bin/Release
 Game/Final Approach Physics Game/.vs/GXPEngine/FileContentIndex/40944b99-812f-4ed6-88bb-d92f5d1389a8.vsidx
 Game/Final Approach Physics Game/.vs/GXPEngine/FileContentIndex/7816103b-41e1-48d8-9fc5-500f51c03ae6.vsidx
 Game/Final Approach Physics Game/.vs/GXPEngine/FileContentIndex/bbd04afb-bf99-4ff2-9f23-f4e5b8ca3244.vsidx
+Game/Final Approach Physics Game/bin/Debug
+Game/Final Approach Physics Game/bin/Release
