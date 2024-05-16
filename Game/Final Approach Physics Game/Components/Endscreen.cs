@@ -30,6 +30,7 @@ public class Endscreen : AnimationSprite
         {
             scoreText = new AnimationSprite("ScoreText.png", 4, 6);
         }
+        
         switch (myGame.score)
         {
             case 10500:

@@ -26,6 +26,8 @@ public class Ball : EasyDraw
 
     public bool collidable = true;
 
+    Sound BallWallHit;
+    Sound BallBallHit;
     
 
     public MyGame myGame;
@@ -175,6 +177,9 @@ public class Ball : EasyDraw
             position = PointOfImpact(col.timeOfImpact);
 
             velocity.Reflect(bounciness, col.normal.Normalized());
+
+            BallWallHit = new Sound("Ball_Bounce2.wav");
+            BallWallHit.Play();
         }
         if (col.other is Ball)
         {
@@ -183,6 +188,9 @@ public class Ball : EasyDraw
             position = PointOfImpact(col.timeOfImpact);
 
             velocity.Reflect(bounciness, (position - otherBall.position).Normalized());
+
+            BallBallHit = new Sound("Ball_Bounce3.wav");
+            BallBallHit.Play();
         }
         if (col.other != null)
             OnBounce();

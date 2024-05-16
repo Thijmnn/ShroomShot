@@ -138,12 +138,16 @@ public class MyGame : Game
     public Hole hole3;
 
     Sprite PopUPMSg;
+    Sprite RtoRotateMsg;
     AnimationSprite scoreText;
 
     public  int score;
 
     public bool Level1Complete;
     public bool Level2Complete;
+
+    
+    Sound MainTheme;
 
     public MyGame () : base(/*1200, 800*/1920,1080, false,false)
 	{
@@ -217,11 +221,24 @@ public class MyGame : Game
 
     void Update () 
     {
-        
+         
+            if (MainTheme == null)
+            { 
+                MainTheme = new Sound("LevelMusic.wav");
+                MainTheme.Play();
+            }
 
-        if (Input.GetKeyDown(Key.SPACE)) 
+
+        if (levelIndex == 2 || levelIndex == 5 || levelIndex == 8)
         {
-            PopUPMSg.alpha = 0;
+            if (Input.GetKeyDown(Key.SPACE))
+            {
+                PopUPMSg.alpha = 0;
+            }
+            if (Input.GetKeyDown(Key.R))
+            {
+                RtoRotateMsg.alpha = 0;
+            }
         }
         /*Console.WriteLine(Level1Complete);
         Console.WriteLine(Level2Complete);*/
@@ -390,8 +407,6 @@ public class MyGame : Game
         levelIndex = index;
         if (index == 0)
         {
-
-
             StartScreen startscreen = new StartScreen();
             AddChild(startscreen);
             score = 10500;
@@ -443,8 +458,7 @@ public class MyGame : Game
             GameState gamestate = new GameState(10, new Vec2(20, 20), false);
             AddChild(gamestate);
 
-            ResetButton resetbutton = new ResetButton(new Vec2(1014, 4));
-            AddChild(resetbutton);
+            
 
             AnimationSprite backgroundUI = new AnimationSprite("UIFinal.png", 1, 3);
             AddChild(backgroundUI);
@@ -453,6 +467,10 @@ public class MyGame : Game
             PopUPMSg = new Sprite("ShootMessage.png");
             AddChild(PopUPMSg);
             PopUPMSg.SetXY(442, 940);
+
+            RtoRotateMsg = new Sprite("pressR.png");
+            AddChild(RtoRotateMsg);
+            RtoRotateMsg.SetXY(0, 900);
 
             PolyShape cross = new PolyShape(new Vec2(1745, 93), new List<Vec2>
             {
@@ -608,8 +626,7 @@ public class MyGame : Game
             GameState gamestate = new GameState(10, new Vec2(20, 20), false);
             AddChild(gamestate);
 
-            ResetButton resetbutton = new ResetButton(new Vec2(1014, 4));
-            AddChild(resetbutton);
+            
 
             AnimationSprite backgroundUI = new AnimationSprite("UIFinal.png", 1, 3);
             AddChild(backgroundUI);
@@ -658,6 +675,10 @@ public class MyGame : Game
             PopUPMSg = new Sprite("ShootMessage.png");
             AddChild(PopUPMSg);
             PopUPMSg.SetXY(272, 930);
+
+            RtoRotateMsg = new Sprite("pressR.png");
+            AddChild(RtoRotateMsg);
+            RtoRotateMsg.SetXY(888, 900);
 
             Sprite ScoreElement = new Sprite("ScoreBar.png");
             AddChild(ScoreElement);
@@ -845,12 +866,15 @@ public class MyGame : Game
             GameState gamestate = new GameState(10, new Vec2(20, 20), false);
             AddChild(gamestate);
 
-            ResetButton resetbutton = new ResetButton(new Vec2(1014, 4));
-            AddChild(resetbutton);
+            
 
             PopUPMSg = new Sprite("ShootMessage.png");
             AddChild(PopUPMSg);
             PopUPMSg.SetXY(300, 800);
+
+            RtoRotateMsg = new Sprite("pressR.png");
+            AddChild(RtoRotateMsg);
+            RtoRotateMsg.SetXY(372, 900);
 
             Sprite ScoreElement = new Sprite("ScoreBar.png");
             AddChild(ScoreElement);

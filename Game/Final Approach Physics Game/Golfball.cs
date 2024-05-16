@@ -9,6 +9,8 @@ public class Golfball : Ball
     Hole hole;
 
     Endscreen endscreen;
+
+    Sound Victory;
     public Golfball(Vec2 pos) : base(10, pos)
     {
         sprite = new AnimationSprite("GolfballFinal.png", 18, 1, -1, false, false);
@@ -46,10 +48,10 @@ public class Golfball : Ball
         //    myGame.score = 10500;
         //}
 
-        if (Input.GetKeyDown(Key.L))
+        /*if (Input.GetKeyDown(Key.L))
         {
             LoadEndscreen();
-        }
+        }*/
     }
 
     void CheckDistToHole()
@@ -94,9 +96,11 @@ public class Golfball : Ball
             {
                 endscreen.SetCycle(3, 1);
             }
-            myGame.score = 10500;
+            /*myGame.score = 10500;*/
         }
         game.AddChild(endscreen);
+        Victory = new Sound("BadToTheBoneVictory.wav");
+        Victory.Play();
     }
 
     void RotateBall()

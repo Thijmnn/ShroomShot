@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
@@ -21,9 +22,12 @@ namespace GXPEngine
         float height = 0;
         Sprite sprite;
         string typeName;
-
+        Sound PickUp;
+        Sound DropDown;
         public PolyShape(Vec2 pos, List<Vec2> nPoints, List<Ball> nBalls, Sprite nSprite, bool nMovable = true)
         {
+            
+            
             if (nPoints.Count == 0 && nBalls.Count == 0)
             {
                 Console.WriteLine("Invalid Shape");
@@ -266,6 +270,8 @@ namespace GXPEngine
                             if (selectedAmount <= 0)
                             {
                                 selected = true;
+                                PickUp = new Sound("ItemPickup.wav");
+                                PickUp.Play();
                             }
                             Console.WriteLine("SELECTED");
                         }
@@ -290,9 +296,15 @@ namespace GXPEngine
                     }
                 }
             }
-            if (Input.GetMouseButtonUp(0))
+            if (selected)
             {
-                selected = false;
+                if (Input.GetMouseButtonUp(0))
+                {
+                    selected = false;
+                    //PLAY DROP
+                    DropDown = new Sound("ItemDrop.wav");
+                    DropDown.Play(false,0,0.6f);
+                }
             }
             if (Input.GetKeyDown(Key.R) && selected)
             {

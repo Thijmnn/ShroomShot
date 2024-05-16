@@ -15,6 +15,4 @@ public class Hole : Sprite
         x = position.x;
         y = position.y;
     }
-
-
 }

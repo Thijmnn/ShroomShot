@@ -18,6 +18,8 @@ public class GameState : EasyDraw
     Vec2 ballSpeed;
     AnimationSprite GarryTopDownSprite;
 
+    Sound GolferHit;
+
     bool GarryAnimate;
     public GameState(int pRadius, Vec2 pPos, bool pMoving = true) : base(pRadius * 2 + 1, pRadius * 2 + 1)
     {
@@ -45,6 +47,8 @@ public class GameState : EasyDraw
         {
             if (gamestate == 0)
             {
+                GolferHit = new Sound("Golf_Hit1.wav");
+                GolferHit.Play();
                 gamestate = 1;
                 myGame.score -= 500;
                 newGolfball.velocity = ballSpeed;
