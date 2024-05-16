@@ -24,7 +24,7 @@ public class Endscreen : AnimationSprite
 
         scoreText.SetOrigin(scoreText.width/2, scoreText.height/2);
         scoreText.SetXY(width/2,height/2 + 80);
-        scoreText.SetScaleXY(1.5f);
+        scoreText.SetScaleXY(.5f);
 
         if (scoreText == null)
         {
@@ -121,7 +121,7 @@ public class Endscreen : AnimationSprite
             SetCycle(3, 1);
         }
         Animate(0.3f);
-        myGame.score = 10500;
+        //myGame.score = 10500;
     }
     void Update()
     {

@@ -96,7 +96,6 @@ public class Golfball : Ball
             {
                 endscreen.SetCycle(3, 1);
             }
-            /*myGame.score = 10500;*/
         }
         game.AddChild(endscreen);
         Victory = new Sound("BadToTheBoneVictory.wav");
