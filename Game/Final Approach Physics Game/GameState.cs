@@ -16,12 +16,15 @@ public class GameState : EasyDraw
     MyGame myGame;
     Vec2 ballPos;
     Vec2 ballSpeed;
+    AnimationSprite GarryTopDownSprite;
 
+    bool GarryAnimate;
     public GameState(int pRadius, Vec2 pPos, bool pMoving = true) : base(pRadius * 2 + 1, pRadius * 2 + 1)
     {
         myGame = (MyGame)game;
         radius = pRadius;
         moving = pMoving;
+        GarryTopDownSprite = new AnimationSprite("GarryTopDownSprite.png", 7, 1);
     }
 
     void Draw(byte red, byte green, byte blue, byte alpha)
@@ -33,20 +36,48 @@ public class GameState : EasyDraw
 
     void Update()
     {
-        if(myGame.levelIndex == 2)
+        if (GarryAnimate)
         {
-            ballPos = new Vec2(767, 851);
+            GarryTopDownSprite.Animate(0.1f);
+        }
+
+        if (GarryTopDownSprite.currentFrame == 3)
+        {
+            if (gamestate == 0)
+            {
+                gamestate = 1;
+                myGame.score -= 500;
+                newGolfball.velocity = ballSpeed;
+            }
+        }
+        if (GarryTopDownSprite.currentFrame == 6)
+        {
+            GarryAnimate = false;
+            GarryTopDownSprite.currentFrame = 0;
+        }
+
+        if (myGame.levelIndex == 2)
+        {
+            ballPos = new Vec2(767, 831);
             ballSpeed = new Vec2(0,-13);
+            AddChild(GarryTopDownSprite);
+            GarryTopDownSprite.SetXY(607, 751);
         }
         else if(myGame.levelIndex == 5)
         {
             ballPos = new Vec2(576, 802);
             ballSpeed = new Vec2(0.6f,-12);
+            AddChild(GarryTopDownSprite);
+            GarryTopDownSprite.SetXY(407, 751);
         }
         else if (myGame.levelIndex == 8)
         {
-            ballPos = new Vec2(500, 800);
+            ballPos = new Vec2(493, 638);
             ballSpeed = new Vec2 (19,0);
+            AddChild(GarryTopDownSprite);
+            GarryTopDownSprite.SetXY(500, 500);
+            GarryTopDownSprite.rotation = 90;
+
         }
         switch (gamestate)
         {
@@ -61,8 +92,6 @@ public class GameState : EasyDraw
                 break;
         }
 
-        
-
         if (newGolfball == null || MyGame.Approximate(newGolfball.velocity, new Vec2(0, 0), 0.1f))
         {
             if (gamestate == 1 || newGolfball == null)
@@ -76,10 +105,9 @@ public class GameState : EasyDraw
         {
             if (gamestate == 0)
             {
-                gamestate = 1;
-                myGame.score -= 500;
-                newGolfball.velocity = ballSpeed;
+                GarryAnimate = true;
             }
+            
         }
     }
 
