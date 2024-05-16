@@ -14,8 +14,11 @@ public class Endscreen : AnimationSprite
     public Endscreen() : base("Endscreen.png",1,4,-1,false,false) 
     {
         myGame = (MyGame)game;
-        nextlevel = new LevelButton(new Vec2(800,800), "NextLevelButtonPlaceholder.png", myGame.levelIndex + 3);
+        nextlevel = new LevelButton(new Vec2(800,800), "NextLevelButtonPlaceholder.png", 1);
         AddChild(nextlevel);
+
+        LevelButton retryButton = new LevelButton(new Vec2(200, 200), "RetryButton.png", myGame.levelIndex);
+        game.AddChild(retryButton);
     }
     void Update()
     {

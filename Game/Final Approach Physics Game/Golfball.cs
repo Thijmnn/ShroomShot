@@ -33,12 +33,13 @@ public class Golfball : Ball
             if (distanceHole.Length() < radius + 3)
             {
                 //myGame.LoadLevel(myGame.levelIndex + 1);
+                if (myGame.levelIndex == 2) { myGame.Level1Complete = true; }
+                if (myGame.levelIndex == 5) { myGame.Level2Complete = true; }
+
                 myGame.Level1Complete = true;
                 Endscreen endscreen = new Endscreen();
                 game.AddChild(endscreen);
 
-                LevelButton retryButton = new LevelButton(new Vec2(200, 200), "RetryButton.png",myGame.levelIndex);
-                game.AddChild(retryButton);
                 if (myGame.score >= 8000)
                 {
                     endscreen.SetCycle(3, 1);

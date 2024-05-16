@@ -214,7 +214,7 @@ namespace GXPEngine
 
         void CheckInput()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 if (!selected)
                 {
@@ -222,8 +222,18 @@ namespace GXPEngine
                     {
                         if (Input.mouseX > x && Input.mouseY > y && Input.mouseX < x + width && Input.mouseY < y + height)
                         {
-                            selected = true;
-
+                            int selectedAmount = 0;
+                            foreach (PolyShape shape in myGame._polyShapes)
+                            {
+                                if (shape.selected == true)
+                                {
+                                    selectedAmount++;
+                                }
+                            }
+                            if (selectedAmount <= 0)
+                            {
+                                selected = true;
+                            }
                             Console.WriteLine("SELECTED");
                         }
                     }
@@ -235,10 +245,10 @@ namespace GXPEngine
                         }
                     }
                 }
-                else if (selected)
-                {
-                    selected = false;
-                }
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                selected = false;
             }
             if (Input.GetKeyDown(Key.R) && selected)
             {

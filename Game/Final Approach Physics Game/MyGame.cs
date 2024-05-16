@@ -126,6 +126,7 @@ public class MyGame : Game
 
     List<Ball> _movers;
     List<NLineSegment> _lines;
+    public List<PolyShape> _polyShapes;
 
     Vec2 mousePos1;
     Vec2 mousePos2;
@@ -301,6 +302,7 @@ public class MyGame : Game
             mover.Destroy();
         }
         _movers = new List<Ball>();
+        _polyShapes = new List<PolyShape>();
     }
     public void ScoreHandler()
     {
@@ -407,6 +409,7 @@ public class MyGame : Game
             new Vec2( 648, 905),
             }, null, false);
             AddChild(shape);
+
             shape = new PolyShape(new Vec2(0, 0), new List<Vec2>
             {
             new Vec2( 738, 538),
@@ -464,6 +467,7 @@ public class MyGame : Game
 
             }, null) ;
             AddChild(shape);
+            _polyShapes.Add(shape);
 
             shape = new PolyShape(new Vec2(1560, 320), new List<Vec2>
             {
@@ -475,7 +479,7 @@ public class MyGame : Game
 
         }, null);
             AddChild(shape);
-
+            _polyShapes.Add(shape);
             shape = new PolyShape(new Vec2(1693, 788), new List<Vec2>
             {
                 new Vec2(0,0),
@@ -487,6 +491,7 @@ public class MyGame : Game
 
         }, null) ;
             AddChild(shape);
+            _polyShapes.Add(shape);
 
             AddChild(scoreText);
             scoreText.SetXY(568, 1);
