@@ -149,6 +149,7 @@ public class MyGame : Game
 	{
 
         score = 10500;
+        scoreText = new AnimationSprite("ScoreText.png", 4, 6);
 
         _movers = new List<Ball>();
         _lines = new List<NLineSegment>();
@@ -235,7 +236,7 @@ public class MyGame : Game
 
         HandleInput();
         ScoreHandler();
-        
+
     }
 
     public void InstantiateBall(Ball ball)
@@ -306,7 +307,10 @@ public class MyGame : Game
     }
     public void ScoreHandler()
     {
-        scoreText = new AnimationSprite("ScoreText.png", 4, 6);
+        if (scoreText == null)
+        {
+            scoreText = new AnimationSprite("ScoreText.png", 4, 6);
+        }
         switch (score)
         {
             case 10500:
@@ -376,6 +380,7 @@ public class MyGame : Game
                 scoreText.SetCycle(21, 1);
                 break;
         }
+        scoreText.Animate(0.5f);
 
     }
     public void LoadLevel(int index)
@@ -512,6 +517,7 @@ public class MyGame : Game
             AddChild(trapezium);
             _polyShapes.Add(trapezium);
 
+            scoreText = new AnimationSprite("ScoreText.png", 4, 6);
             AddChild(scoreText);
             scoreText.SetXY(568, 1);
             scoreText.width = scoreText.width - 50;
@@ -657,6 +663,7 @@ public class MyGame : Game
             AddChild(ScoreElement);
             ScoreElement.SetXY(game.width / 2 - ScoreElement.width + 50, 0);
 
+            scoreText = new AnimationSprite("ScoreText.png", 4, 6);
             AddChild(scoreText);
             scoreText.SetXY(568, 1);
             scoreText.width = scoreText.width - 50;
@@ -851,6 +858,8 @@ public class MyGame : Game
 
             MenuButton menubutton = new MenuButton(new Vec2(5, 5));
             AddChild(menubutton);
+
+            scoreText = new AnimationSprite("ScoreText.png", 4, 6);
             AddChild(scoreText);
             scoreText.SetXY(568, 1);
             scoreText.width = scoreText.width - 50;

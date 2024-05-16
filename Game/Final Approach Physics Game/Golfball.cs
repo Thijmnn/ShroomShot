@@ -25,25 +25,30 @@ public class Golfball : Ball
         RotateBall();
         velocity *= .99f;
 
-        if (endscreen != null)
+        //if (endscreen != null)
+        //{
+        //    if (myGame.score >= 8000)
+        //    {
+        //        endscreen.SetCycle(3, 1);
+        //    }
+        //    if (myGame.score >= 5000 && myGame.score <= 7999)
+        //    {
+        //        endscreen.SetCycle(2, 1);
+        //    }
+        //    if (myGame.score >= 2000 && myGame.score <= 4999)
+        //    {
+        //        endscreen.SetCycle(1, 1);
+        //    }
+        //    if (myGame.score >= 0 && myGame.score <= 1999)
+        //    {
+        //        endscreen.SetCycle(0, 1);
+        //    }
+        //    myGame.score = 10500;
+        //}
+
+        if (Input.GetKeyDown(Key.L))
         {
-            if (myGame.score >= 8000)
-            {
-                endscreen.SetCycle(3, 1);
-            }
-            if (myGame.score >= 5000 && myGame.score <= 7999)
-            {
-                endscreen.SetCycle(2, 1);
-            }
-            if (myGame.score >= 2000 && myGame.score <= 4999)
-            {
-                endscreen.SetCycle(1, 1);
-            }
-            if (myGame.score >= 0 && myGame.score <= 1999)
-            {
-                endscreen.SetCycle(0, 1);
-            }
-            myGame.score = 10500;
+            LoadEndscreen();
         }
     }
 
@@ -60,13 +65,38 @@ public class Golfball : Ball
                 if (myGame.levelIndex == 5) { myGame.Level2Complete = true; }
 
                 myGame.Level1Complete = true;
-                endscreen = new Endscreen();
-                game.AddChild(endscreen);
 
+                LoadEndscreen();
                 
                 this.Destroy();
             }
         }
+    }
+
+    void LoadEndscreen()
+    {
+        endscreen = new Endscreen();
+        if (endscreen != null)
+        {
+            if (myGame.score >= 8000)
+            {
+                endscreen.SetCycle(0, 1);
+            }
+            if (myGame.score >= 5000 && myGame.score <= 7999)
+            {
+                endscreen.SetCycle(1, 1);
+            }
+            if (myGame.score >= 2000 && myGame.score <= 4999)
+            {
+                endscreen.SetCycle(2, 1);
+            }
+            if (myGame.score >= 0 && myGame.score <= 1999)
+            {
+                endscreen.SetCycle(3, 1);
+            }
+            myGame.score = 10500;
+        }
+        game.AddChild(endscreen);
     }
 
     void RotateBall()
