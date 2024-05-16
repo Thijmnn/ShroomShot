@@ -269,7 +269,7 @@ public class MyGame : Game
         //    ball.velocity.SetXY(0, -2);
         //    InstantiateBall(ball);
         //}
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(Key.Z))
         {
             Console.WriteLine("new Vec2( " + Input.mouseX + ", " + Input.mouseY + "),");
         }
@@ -449,51 +449,68 @@ public class MyGame : Game
             AddChild(PopUPMSg);
             PopUPMSg.SetXY(442, 940);
 
-            shape = new PolyShape(new Vec2(1720, 63), new List<Vec2>
+            PolyShape cross = new PolyShape(new Vec2(1745, 93), new List<Vec2>
             {
-                new Vec2(40,0),
-                new Vec2(40,40),
-                new Vec2(0,40),
-                new Vec2(0,95),
-                new Vec2(40,95),
-                new Vec2(40,135),
-                
-                new Vec2(95,135),
-                new Vec2(95,95),
-                new Vec2(135,95),
-                new Vec2(135,40),
-                new Vec2(95,40),
-                new Vec2(95,0),
-                new Vec2(40,0)
-                
+                //new Vec2(40,0),
+                //new Vec2(40,40),
+                //new Vec2(0,40),
+                //new Vec2(0,95),
+                //new Vec2(40,95),
+                //new Vec2(40,135),
 
-            }, null) ;
-            AddChild(shape);
-            _polyShapes.Add(shape);
+                //new Vec2(95,135),
+                //new Vec2(95,95),
+                //new Vec2(135,95),
+                //new Vec2(135,40),
+                //new Vec2(95,40),
+                //new Vec2(95,0),
+                //new Vec2(40,0)
 
-            shape = new PolyShape(new Vec2(1560, 320), new List<Vec2>
+                new Vec2( 5, 28),
+                new Vec2( 5, 54),
+                new Vec2( 28, 54),
+                new Vec2( 28, 73),
+                new Vec2( 57, 73),
+                new Vec2( 57, 54),
+                new Vec2( 78, 54),
+                new Vec2( 78, 27),
+                new Vec2( 57, 27),
+                new Vec2( 57, 6),
+                new Vec2( 28, 6),
+                new Vec2( 28, 28),
+                new Vec2( 5, 28)
+
+            }, new Sprite("1_-_3.png"));
+            AddChild(cross);
+            _polyShapes.Add(cross);
+
+            PolyShape triangle = new PolyShape(new Vec2(1560, 320), new List<Vec2>
             {
-                
-                new Vec2(80,95),
-                new Vec2(0,190),
-                new Vec2(160,190),
-                new Vec2(80,95)
 
-        }, null);
-            AddChild(shape);
-            _polyShapes.Add(shape);
-            shape = new PolyShape(new Vec2(1693, 788), new List<Vec2>
+                new Vec2( 4, 10),
+                new Vec2( 52, 68),
+                new Vec2( 97, 10),
+                new Vec2( 4, 10)
+
+        }, new Sprite("1_-_2.png"));
+            triangle.Rotate(180);
+            triangle.SetPos(new Vec2(1600, 440));
+            AddChild(triangle);
+            _polyShapes.Add(triangle);
+
+            PolyShape trapezium = new PolyShape(new Vec2(1718, 797), new List<Vec2>
             {
-                new Vec2(0,0),
-                new Vec2(35,80),
-                new Vec2(175,80),
-                new Vec2(140,0),
-                new Vec2(0,0)
+                new Vec2( 7, 5),
+                new Vec2( 25, 50),
+                new Vec2( 116, 50),
+                new Vec2( 98, 5),
+                new Vec2(7,5)
                 
 
-        }, null) ;
-            AddChild(shape);
-            _polyShapes.Add(shape);
+        }, new Sprite("1_-_1.png")) ;
+
+            AddChild(trapezium);
+            _polyShapes.Add(trapezium);
 
             AddChild(scoreText);
             scoreText.SetXY(568, 1);
@@ -592,39 +609,44 @@ public class MyGame : Game
             AddChild(backgroundUI);
             backgroundUI.SetCycle(1, 1);
 
-            shape = new PolyShape(new Vec2(1840, 175), 57, true);
-            AddChild(shape);
+            PolyShape circle = new PolyShape(new Vec2(1818, 153), 34, true, new Sprite("2_-_4.png"));
+            AddChild(circle);
+            _polyShapes.Add(circle);
 
-            shape = new PolyShape(new Vec2(1756, 531), new List<Vec2> {
-            new Vec2(0,0),
-            new Vec2(0,90),
-            new Vec2(90,90),
-            new Vec2(90,0),
-            new Vec2(0,0),
-            }, null);
-            AddChild(shape);
+            PolyShape square = new PolyShape(new Vec2(1770, 545), new List<Vec2> {
+            new Vec2( 5, 3),
+            new Vec2( 3, 58),
+            new Vec2( 62, 57),
+            new Vec2( 64, 3),
+            new Vec2( 5, 3)
+            }, new Sprite("2_-_2.png"));
+            AddChild(square);
+            _polyShapes.Add(square);
 
 
 
-            shape = new PolyShape(new Vec2(1582, 320), new List<Vec2> {
-            new Vec2(30,0),
-            new Vec2(0,75),
-            new Vec2(30,150),
-            new Vec2(60,75),
-            new Vec2(30,0),
-            }, null);
-            AddChild(shape);
+            PolyShape rhomboid = new PolyShape(new Vec2(1582, 345), new List<Vec2> {
+            new Vec2( 31, 5),
+            new Vec2( 6, 46),
+            new Vec2( 26, 89),
+            new Vec2( 52, 47),
+            new Vec2( 31, 5)
+            }, new Sprite("2_-_3.png"));
+            AddChild(rhomboid);
+            _polyShapes.Add(rhomboid);
 
-            shape = new PolyShape(new Vec2(1573, 763), new List<Vec2> {
-            new Vec2(40,5),
-            new Vec2(10,20),
-            new Vec2(80,100),
-            new Vec2(180,100),
-            new Vec2(180,70),
-            new Vec2(95,70),
-            new Vec2(40,5),
-            }, null);
-            AddChild(shape);
+            PolyShape angledPlank = new PolyShape(new Vec2(1610, 792), new List<Vec2> {
+            new Vec2( 10, 48),
+            new Vec2( 8, 68),
+            new Vec2( 65, 69),
+            new Vec2( 116, 20),
+            new Vec2( 99, 7),
+            new Vec2( 62, 48),
+            new Vec2( 11, 48)
+            }, new Sprite("2_-_1.png"));
+            angledPlank.Rotate(45);
+            AddChild(angledPlank);
+            _polyShapes.Add(angledPlank);
 
 
             PopUPMSg = new Sprite("ShootMessage.png");
@@ -683,7 +705,7 @@ public class MyGame : Game
             new Vec2(437, 212),
             new Vec2(611, 212),
             new Vec2(616, 195)
-        }, null, false);
+            }, null, false);
             AddChild(shape);
 
             
@@ -744,68 +766,74 @@ public class MyGame : Game
             backgroundUI.SetCycle(2, 1);
 
             
-            PolyShape spekjeshape = new PolyShape(new Vec2(1588, 814), new List<Vec2> {
-            new Vec2(30,0),
-            new Vec2(0,75),
-            new Vec2(30,150),
-            new Vec2(60,75),
-            new Vec2(30,0),
-            }, null);
+            PolyShape spekjeshape = new PolyShape(new Vec2(1590, 840), new List<Vec2> {
+            new Vec2( 31, 5),
+            new Vec2( 6, 46),
+            new Vec2( 26, 89),
+            new Vec2( 52, 47),
+            new Vec2( 31, 5)
+            }, new Sprite("2_-_3.png"));
             AddChild(spekjeshape);
+            _polyShapes.Add(spekjeshape);
 
 
-            PolyShape BopItshape = new PolyShape(new Vec2(1665, 49),
+            PolyShape BopItshape = new PolyShape(new Vec2(1665, 65),
                 new List<Vec2> {
-                new Vec2(10,20),
-                new Vec2 (10,100),
-                new Vec2 (30,100),
-                new Vec2 (30,20),
-                new Vec2(10,20)
+                new Vec2( 15, 34),
+                new Vec2( 15, 57),
+                new Vec2( 30, 59),
+                new Vec2( 30, 34),
+                new Vec2( 15, 34)
                 },
                 new List<Ball>{
-                    new Ball(32,new Vec2(20,100), Vec2.Zero(), false),
-                    new Ball(32,new Vec2(20,20), Vec2.Zero(), false)
-                }, null);
+                    new Ball(14,new Vec2( 22, 22), Vec2.Zero(), false),
+                    new Ball(14,new Vec2( 21, 70), Vec2.Zero(), false)
+                }, new Sprite("3_-_6.png"));
             AddChild(BopItshape);
+            _polyShapes.Add(BopItshape);
 
 
-            PolyShape Squareshape = new PolyShape(new Vec2(1750, 700), new List<Vec2> {
-            new Vec2(0,0),
-            new Vec2(0,100),
-            new Vec2(100,100),
-            new Vec2(100,0),
-            new Vec2(0,0),
-            }, null);
+            PolyShape Squareshape = new PolyShape(new Vec2(1769, 721), new List<Vec2> {
+            new Vec2( 5, 3),
+            new Vec2( 3, 58),
+            new Vec2( 62, 57),
+            new Vec2( 64, 3),
+            new Vec2( 5, 3)
+            }, new Sprite("2_-_2.png"));
             AddChild(Squareshape);
+            _polyShapes.Add(Squareshape);
 
 
-            PolyShape Arrowshape = new PolyShape(new Vec2(1730, 467), new List<Vec2> {
-            new Vec2(20,0),
-            new Vec2(20,70),
-            new Vec2(0,70),
-            new Vec2(45,125),  
-            new Vec2(90,70),
-            new Vec2(70,70),
-            new Vec2(70,0),
-            new Vec2(20,0),
-            }, null);
+            PolyShape Arrowshape = new PolyShape(new Vec2(1740, 487), new List<Vec2> {
+            new Vec2( 17, 8),
+            new Vec2( 17, 54),
+            new Vec2( 5, 55),
+            new Vec2( 33, 90),
+            new Vec2( 62, 54),
+            new Vec2( 51, 54),
+            new Vec2( 50, 8),
+            new Vec2( 17, 8)
+
+            }, new Sprite("3_-_5.png"));
             AddChild(Arrowshape);
+            _polyShapes.Add(Arrowshape);
 
-            PolyShape Hexashape = new PolyShape(new Vec2(1530, 337), new List<Vec2> {
+            PolyShape Hexashape = new PolyShape(new Vec2(1550, 363), new List<Vec2> {
 
-            new Vec2(40,0),
-            new Vec2(0,40),
-            new Vec2(0,80),
-            new Vec2(40,120),
-            new Vec2(80,120),
-            new Vec2(120,80),
-            new Vec2(120,40),
-            new Vec2(80,0),
-            new Vec2(40,0)
+            new Vec2( 3, 20),
+            new Vec2( 2, 49),
+            new Vec2( 21, 67),
+            new Vec2( 53, 67),
+            new Vec2( 72, 48),
+            new Vec2( 72, 21),
+            new Vec2( 53, 3),
+            new Vec2( 21, 3),
+            new Vec2( 3, 20)
 
+            }, new Sprite("3_-_4.png")) ;
+            AddChild(Hexashape);
+            _polyShapes.Add(Hexashape);
 
-            }, null) ;
-            AddChild(Hexashape);  
 
             GameState gamestate = new GameState(10, new Vec2(20, 20), false);
             AddChild(gamestate);

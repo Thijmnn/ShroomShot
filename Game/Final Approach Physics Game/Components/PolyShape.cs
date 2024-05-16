@@ -36,6 +36,13 @@ namespace GXPEngine
             lines = new List<NLineSegment>();
             balls = nBalls;
             ballPoints = new List<Vec2>();
+            if (nSprite != null)
+            {
+                sprite = nSprite;
+                sprite.SetOrigin(nPoints[0].x, nPoints[0].y);
+                Rotate(0);
+                AddChild(sprite);
+            }
             for (int i = 0; i < balls.Count; i++)
             {
                 ballPoints.Add(balls[i].position);
@@ -69,6 +76,8 @@ namespace GXPEngine
             if (nSprite != null)
             {
                 sprite = nSprite;
+                sprite.SetOrigin(nPoints[0].x, nPoints[0].y);
+                Rotate(0);
                 AddChild(sprite);
             }
             for (int i = 0; i < points.Count; i++)
@@ -94,13 +103,20 @@ namespace GXPEngine
         Ball ball;
         int radius;
 
-        public PolyShape(Vec2 pos, int nRadius, bool nMovable)
+        public PolyShape(Vec2 pos, int nRadius, bool nMovable, Sprite newSprite = null)
         {
             radius = nRadius;
             typeName = "circle";
             movable = nMovable;
             x = pos.x - radius;
             y = pos.y - radius;
+            sprite = newSprite;
+            if (sprite != null)
+            {
+                AddChild(sprite);
+                sprite.SetOrigin(sprite.width/2,sprite.height/2);
+                sprite.SetXY(0,0);
+            }
             width = radius * 2;
             height = radius * 2;
             myGame = (MyGame)game;
@@ -213,8 +229,8 @@ namespace GXPEngine
                     Vec2 point = ballPoints[i];
                     point.RotateAroundDegrees(angle, new Vec2(width / 2, height / 2));
                     ballPoints[i] = point;
-                    if (sprite != null)
-                        sprite.SetXY(points[i].x, points[i].y);
+                    //if (sprite != null)
+                    //    sprite.SetXY(points[i].x, points[i].y);
                 }
             }
             if (sprite != null)
@@ -258,7 +274,18 @@ namespace GXPEngine
                     {
                         if ((new Vec2(x, y) - new Vec2(Input.mouseX, Input.mouseY)).Length() < radius)
                         {
-                            selected = true;
+                            int selectedAmount = 0;
+                            foreach (PolyShape shape in myGame._polyShapes)
+                            {
+                                if (shape.selected == true)
+                                {
+                                    selectedAmount++;
+                                }
+                            }
+                            if (selectedAmount <= 0)
+                            {
+                                selected = true;
+                            }
                         }
                     }
                 }
