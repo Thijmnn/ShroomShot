@@ -94,8 +94,16 @@ public class GameState : EasyDraw
 
         if (newGolfball == null || MyGame.Approximate(newGolfball.velocity, new Vec2(0, 0), 0.1f))
         {
+            Console.WriteLine(" 111111111111");
             if (gamestate == 1 || newGolfball == null)
             {
+                Console.WriteLine(" 22222222222222222222");
+                if (newGolfball != null)
+                {
+                    Console.WriteLine(" 3333333333333333");
+                    newGolfball.sprite.color = 0x55555555;
+                    newGolfball.collidable = false;
+                }
                 newGolfball = new Golfball(ballPos);
                 myGame.InstantiateBall(newGolfball);
                 gamestate = 0;

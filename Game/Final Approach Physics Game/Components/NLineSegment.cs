@@ -25,7 +25,7 @@ namespace GXPEngine
 			myGame = (MyGame)game;
 			_normal = new Arrow (new Vec2(0,0), new Vec2(0,0), 40, 0xffff0000, 1);
 			AddChild (_normal);
-			ball = new Ball(1, pStart, Vec2.Zero());
+			ball = new Ball(0, pStart, Vec2.Zero());
             myGame.InstantiateBall(ball);
 		}
 
@@ -34,8 +34,8 @@ namespace GXPEngine
 		//------------------------------------------------------------------------------------------------------------------------
 		override protected void RenderSelf(GLContext glContext) {
 			if (game != null) {
-				recalculateArrowPosition ();
-				Gizmos.RenderLine(start.x, start.y, end.x, end.y, color, lineWidth);
+				//recalculateArrowPosition ();
+				//Gizmos.RenderLine(start.x, start.y, end.x, end.y, color, lineWidth);
 				ball.position = start;
             }
 		}

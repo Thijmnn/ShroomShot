@@ -195,7 +195,7 @@ namespace GXPEngine
             {
                 x = Input.mouseX;
                 y = Input.mouseY;
-                Console.WriteLine( x + " " +y);
+                Console.WriteLine(x + " " + y);
                 ball.position = new Vec2(x, y);
                 ball.Step();
             }

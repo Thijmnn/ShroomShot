@@ -24,6 +24,8 @@ public class Ball : EasyDraw
     bool firstTime = true;
     public bool grounded = false;
 
+    public bool collidable = true;
+
     
 
     public MyGame myGame;
@@ -104,12 +106,15 @@ public class Ball : EasyDraw
             Ball mover = myGame.GetMover(i);
             if (mover != this)
             {
-                Vec2 relativePosition = position - mover.position;
-                float t = toi(mover);
+                if (mover.GetType() != typeof (Golfball))
+                {
+                    Vec2 relativePosition = position - mover.position;
+                    float t = toi(mover);
 
-                if (t < earliestCol.timeOfImpact || earliestCol.other == null)
-                    if (t >= 0 && t < 1)
-                        earliestCol = new CollisionInfo(new Vec2(0, 0), mover, t);
+                    if (t < earliestCol.timeOfImpact || earliestCol.other == null)
+                        if (t >= 0 && t < 1)
+                            earliestCol = new CollisionInfo(new Vec2(0, 0), mover, t);
+                }
             }
         }
         //foreach(NLineSegment line in lines)
