@@ -32,7 +32,31 @@ public class Golfball : Ball
             Vec2 distanceHole = new Vec2(hole.x, hole.y) - position;
             if (distanceHole.Length() < radius + 3)
             {
-                myGame.LoadLevel(myGame.levelIndex + 1);
+                //myGame.LoadLevel(myGame.levelIndex + 1);
+                myGame.Level1Complete = true;
+                Endscreen endscreen = new Endscreen();
+                game.AddChild(endscreen);
+
+                LevelButton retryButton = new LevelButton(new Vec2(200, 200), "RetryButton.png",myGame.levelIndex);
+                game.AddChild(retryButton);
+                if (myGame.score >= 8000)
+                {
+                    endscreen.SetCycle(3, 1);
+                }
+                if (myGame.score >= 5000 && myGame.score <= 7999)
+                {
+                    endscreen.SetCycle(2, 1);
+                }
+                if (myGame.score >= 2000 && myGame.score <= 4999)
+                {
+                    endscreen.SetCycle(1, 1);
+                }
+                if (myGame.score >= 0 && myGame.score <= 1999)
+                {
+                    endscreen.SetCycle(0, 1);
+                }
+                myGame.score = 10500;
+                this.Destroy();
             }
         }
     }

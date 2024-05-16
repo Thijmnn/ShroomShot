@@ -14,14 +14,12 @@ public class Endscreen : AnimationSprite
     public Endscreen() : base("Endscreen.png",1,4,-1,false,false) 
     {
         myGame = (MyGame)game;
-        nextlevel = new LevelButton(new Vec2(800,800), "NextLevelButtonPlaceholder.png", 1);
+        nextlevel = new LevelButton(new Vec2(800,800), "NextLevelButtonPlaceholder.png", myGame.levelIndex + 3);
         AddChild(nextlevel);
-        nextlevelsprite = new Sprite("NextLevelButtonPlaceholder.png", false,false);
-        nextlevel.AddChild(nextlevelsprite);
     }
     void Update()
     {
-        checkinput();
+        //checkinput();
     }
 
     void checkinput()
