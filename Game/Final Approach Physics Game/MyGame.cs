@@ -511,19 +511,19 @@ public class MyGame : Game
             AddChild(retryButton);
             if (score >= 8000)
             {
-                endscreen.SetCycle(3, 1);
+                endscreen.SetCycle(2, 1);
             }
             if (score >= 5000 && score <= 7999)
             {
-                endscreen.SetCycle(2, 1);
+                endscreen.SetCycle(3, 1);
             }
             if (score >= 2000 && score <= 4999)
             {
-                endscreen.SetCycle(1, 1);
+                endscreen.SetCycle(0, 1);
             }
             if (score >= 0 && score <= 1999)
             {
-                endscreen.SetCycle(0, 1);
+                endscreen.SetCycle(1, 1);
             }
             score = 10500;
         }
@@ -650,19 +650,19 @@ public class MyGame : Game
             AddChild(retryButton);
             if (score >= 8000)
             {
-                endscreen.SetCycle(3,1);
+                endscreen.SetCycle(2, 1);
             }
             if (score >= 5000 && score <= 7999)
             {
-                endscreen.SetCycle(2, 1);
+                endscreen.SetCycle(3, 1);
             }
             if (score >= 2000 && score <= 4999)
             {
-                endscreen.SetCycle(1, 1);
-            }
-            if(score >= 0 && score <= 1999)
-            {
                 endscreen.SetCycle(0, 1);
+            }
+            if (score >= 0 && score <= 1999)
+            {
+                endscreen.SetCycle(1, 1);
             }
             score = 10500;
         }
@@ -836,24 +836,23 @@ public class MyGame : Game
             Endscreen endscreen = new Endscreen();
             AddChild(endscreen);
 
-
             RetryButton retryButton = new RetryButton(new Vec2(200, 200));
             AddChild(retryButton);
             if (score >= 8000)
             {
-                endscreen.SetCycle(3, 1);
+                endscreen.SetCycle(0, 1);
             }
             if (score >= 5000 && score <= 7999)
             {
-                endscreen.SetCycle(2, 1);
+                endscreen.SetCycle(1, 1);
             }
             if (score >= 2000 && score <= 4999)
             {
-                endscreen.SetCycle(1, 1);
+                endscreen.SetCycle(2, 1);
             }
             if (score >= 0 && score <= 1999)
             {
-                endscreen.SetCycle(0, 1);
+                endscreen.SetCycle(3, 1);
             }
             score = 10500;
         }

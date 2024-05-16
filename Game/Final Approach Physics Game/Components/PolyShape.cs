@@ -112,7 +112,7 @@ namespace GXPEngine
 
         void Update()
         {
-            Console.WriteLine(" HI1");
+            //Console.WriteLine(" HI1");
             if (GameState.gamestate == 0)
             {
                 if (movable)
