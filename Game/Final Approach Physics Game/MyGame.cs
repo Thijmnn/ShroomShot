@@ -385,6 +385,8 @@ public class MyGame : Game
         levelIndex = index;
         if (index == 0)
         {
+
+
             StartScreen startscreen = new StartScreen();
             AddChild(startscreen);
             score = 10500;

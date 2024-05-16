@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -110,6 +110,22 @@ namespace GXPEngine
             ball.Step();
         }
 
+        void Update()
+        {
+            Console.WriteLine(" HI1");
+            if (GameState.gamestate == 0)
+            {
+                if (movable)
+                {
+                    CheckInput();
+                    if (selected)
+                    {
+                        SetOnMouse();
+                    }
+                }
+            }
+        }
+
         void SetHeightWidth()
         {
             for (int i = 0; i < points.Count; i++)
@@ -216,6 +232,7 @@ namespace GXPEngine
         {
             if (Input.GetMouseButton(0))
             {
+                Console.WriteLine(" hold");
                 if (!selected)
                 {
                     if (typeName == "polyshape" || typeName == "polyshape2")
@@ -260,19 +277,6 @@ namespace GXPEngine
             }
         }
 
-        void Update()
-        {
-            if (GameState.gamestate == 0)
-            {
-                if (movable)
-                {
-                    CheckInput();
-                    if (selected)
-                    {
-                        SetOnMouse();
-                    }
-                }
-            }
-        }
+        
     }
 }
